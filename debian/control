@@ -14,5 +14,6 @@ Description: The basic geometric and math libraries used in ROS.
  This stack contains the packages:
  * tf: tf is a package that lets the user keep track of multiple coordinate frames over time. tf maintains the relationship between coordinate frames in a tree structure buffered in time, and lets the user transform points, vectors, etc between any two coordinate frames at any desired point in time.
  * tf_conversions: This package contains a set of conversion functions to convert common tf datatypes (point, vector, pose, etc) into semantically identical datatypes used by other libraries. The conversion functions make it easier for users of the transform library (tf) to work with the datatype of their choice. Currently this package has support for the Kinematics and Dynamics Library (KDL) and the Eigen matrix library. This package is stable, and will get integrated into tf in the next major release cycle (see roadmap).
- * eigen_conversions: Conversion functions between Eigen and other geometry types.
+ * kdl_conversions: Conversion functions between KDL and geometry_msgs types.
+ * eigen_conversions: Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
 
