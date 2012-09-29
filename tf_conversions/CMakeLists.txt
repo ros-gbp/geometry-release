@@ -1,11 +1,17 @@
+cmake_minimum_required(VERSION 2.8)
 project(tf_conversions)
 
-catkin_project(${PROJECT_NAME} 
-  LIBRARIES ${PROJECT_NAME}
-  INCLUDE_DIRS include
-  DEPENDS tf)
+find_package(catkin REQUIRED)
+find_package(catkin REQUIRED tf)
+catkin_package(LIBRARIES ${PROJECT_NAME}
+               INCLUDE_DIRS include
+               DEPENDS tf
+)
 
 include_directories(include)
+
+find_package(catkin REQUIRED geometry_msgs)
+include_directories(SYSTEM ${geometry_msgs_INCLUDE_DIRS})
 
 find_package(tf)
 include_directories(${tf_INCLUDE_DIRS})
@@ -34,8 +40,8 @@ target_link_libraries(test_kdl_tf ${PROJECT_NAME} )
 #add_pyunit(test/posemath.py)
 # does CATKIN suppor pyunit?
 
-install(DIRECTORY include/
-  DESTINATION include)
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})
 
 install(TARGETS ${PROJECT_NAME}
-  DESTINATION lib)
+  DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
