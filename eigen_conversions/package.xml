@@ -1,6 +1,6 @@
 <package>
   <name>eigen_conversions</name>
-  <version>1.9.16</version>
+  <version>1.9.17</version>
   <description brief="eigen_conversions">
 
      Conversion functions between:
@@ -20,5 +20,8 @@
   <build_depend>orocos_kdl</build_depend>
   <build_depend>std_msgs</build_depend>
 
+  <run_depend>geometry_msgs</run_depend>
+  <run_depend>eigen</run_depend>
   <run_depend>orocos_kdl</run_depend>
+  <run_depend>std_msgs</run_depend>
 </package>
