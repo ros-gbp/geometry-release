@@ -1,0 +1,13 @@
+Source: ros-groovy-kdl-conversions
+Section: misc
+Priority: extra
+Maintainer: Tully Foote <tfoote@willowgarage.com>
+Build-Depends: debhelper (>= 7.0.50~), ros-groovy-orocos-kdl,ros-groovy-geometry-msgs
+Homepage: http://ros.org/wiki/kdl_conversions
+Standards-Version: 3.9.2
+
+Package: ros-groovy-kdl-conversions
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-orocos-kdl,ros-groovy-geometry-msgs
+Description: Conversion functions between KDL and geometry_msgs types.
+
