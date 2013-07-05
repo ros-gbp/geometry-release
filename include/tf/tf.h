@@ -46,6 +46,8 @@
 #include <boost/signals.hpp>
 #include "geometry_msgs/TwistStamped.h"
 
+#include <tf2_ros/buffer.h>
+
 namespace tf
 {
 /** \brief resolve tf names */
@@ -329,11 +331,13 @@ public:
   std::string getTFPrefix() const { return tf_prefix_;};
 
   //Declare that it is safe to call waitForTransform
-  void setUsingDedicatedThread(bool value) { using_dedicated_thread_ = value;};
-  // Get the state of using_dedicated_thread_
-  bool isUsingDedicatedThread() { return using_dedicated_thread_;};
+  void setUsingDedicatedThread(bool value) { tf2_buffer_.setUsingDedicatedThread(value);};
+  // Get the state of using_dedicated_thread_ from the buffer
+  bool isUsingDedicatedThread() { return tf2_buffer_.isUsingDedicatedThread();};
 
 protected:
+
+  
 
   /** \brief The internal storage class for ReferenceTransform.
    *
@@ -384,8 +388,6 @@ protected:
   TransformsChangedSignal transforms_changed_;
   boost::mutex transforms_changed_mutex_;
 
-  //Whether it is safe to use waitForTransform.  This is basically stating that tf is multithreaded.  
-  bool using_dedicated_thread_;
   
  public:
   // A flag to allow falling back to wall time
@@ -419,37 +421,15 @@ protected:
   /// String to number for frame lookup with dynamic allocation of new frames
   CompactFrameID lookupFrameNumber(const std::string& frameid_str) const
   {
-    unsigned int retval = 0;
-    boost::recursive_mutex::scoped_lock(frame_mutex_);
-    M_StringToCompactFrameID::const_iterator map_it = frameIDs_.find(frameid_str);
-    if (map_it == frameIDs_.end())
-    {
-      std::stringstream ss;
-      ss << "Frame id " << frameid_str << " does not exist! Frames (" << frameIDs_.size() << "): " << allFramesAsString();
-      throw tf::LookupException(ss.str());
-    }
-    else
-      retval = map_it->second;
-    return retval;
+    return tf2_buffer_._lookupFrameNumber(frameid_str);
   };
 
   /// String to number for frame lookup with dynamic allocation of new frames
   CompactFrameID lookupOrInsertFrameNumber(const std::string& frameid_str)
   {
-    unsigned int retval = 0;
-    boost::recursive_mutex::scoped_lock(frame_mutex_);
-    M_StringToCompactFrameID::iterator map_it = frameIDs_.find(frameid_str);
-    if (map_it == frameIDs_.end())
-    {
-      retval = frames_.size();
-      frameIDs_[frameid_str] = retval;
-      frames_.push_back( new TimeCache(cache_time));
-      frameIDs_reverse.push_back(frameid_str);
-    }
-    else
-      retval = frameIDs_[frameid_str];
-    return retval;
+    return tf2_buffer_._lookupOrInsertFrameNumber(frameid_str);
   };
+
   ///Number to string frame lookup may throw LookupException if number invalid
   std::string lookupFrameString(unsigned int frame_id_num) const
   {
@@ -471,7 +451,10 @@ protected:
   bool test_extrapolation(const ros::Time& target_time, const TransformLists& t_lists, std::string * error_string) const;
 	*/
 
- private:
+protected:
+  tf2_ros::Buffer tf2_buffer_;
+
+private:
   /**@brief Return the latest rostime which is common across the spanning set
    * zero if fails to cross */
   int getLatestCommonTime(CompactFrameID target_frame, CompactFrameID source_frame, ros::Time& time, std::string* error_string) const;
