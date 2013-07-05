@@ -1517,7 +1517,7 @@ TEST(tf, getParent)
   for  (uint64_t i = 0; i <  children.size(); i++)
     {
       EXPECT_TRUE(mTR.getParent(children[i], ros::Time().fromNSec(10), output));
-      EXPECT_STREQ(tf::resolve("",parents[i]).c_str(), output.c_str());
+      EXPECT_STREQ(parents[i].c_str(), output.c_str());
     }
   
   EXPECT_FALSE(mTR.getParent("j", ros::Time().fromNSec(10), output));
@@ -1566,10 +1566,12 @@ TEST(tf, waitForTransform)
 
   tf::Transformer mTR(true);
 
+  
+
   // Check assertion of extra string
   std::string error_str;
   EXPECT_FALSE(mTR.waitForTransform("parent", "me", ros::Time().fromNSec(10000000), ros::Duration().fromSec(1.0), ros::Duration().fromSec(0.01), &error_str));
-  EXPECT_STREQ("Do not call waitForTransform unless you are using another thread for populating data. Without a dedicated thread it will always timeout.  If you have a seperate thread servicing tf messages, call setUsingDedicatedThread(true)", error_str.c_str());
+  EXPECT_STREQ(tf2_ros::threading_error.c_str(), error_str.c_str());
 
   // check that it doesn't segfault if NULL
   EXPECT_FALSE(mTR.waitForTransform("parent", "me", ros::Time().fromNSec(10000000), ros::Duration().fromSec(1.0), ros::Duration().fromSec(0.01)));
@@ -1897,89 +1899,6 @@ TEST(tf, ExtrapolationFromOneValue)
 
 
 
-TEST(tf, getLatestCommonTime)
-{
-  tf::Transformer mTR(true);
-  mTR.setTransform(  StampedTransform (tf::Transform(tf::Quaternion(0,0,0,1), tf::Vector3(0,0,0)), ros::Time().fromNSec(1000),  "parent", "a"));
-  mTR.setTransform(  StampedTransform (tf::Transform(tf::Quaternion(0,0,0,1), tf::Vector3(0,0,0)), ros::Time().fromNSec(2000),  "parent's parent", "parent"));
-  
-  //simple case
-  ros::Time t;
-  mTR.getLatestCommonTime("a", "parent's parent", t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(1000));
-
-  //no connection
-  EXPECT_EQ(tf::LOOKUP_ERROR, mTR.getLatestCommonTime("a", "not valid", t, NULL));
-  EXPECT_EQ(t, ros::Time());
-
-  //testing with update
-  mTR.setTransform(  StampedTransform (tf::Transform(tf::Quaternion(0,0,0,1), tf::Vector3(0,0,0)), ros::Time().fromNSec(3000),  "parent", "a"));
-  mTR.getLatestCommonTime("a", "parent's parent",t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(2000));
-
-  //longer chain
-  mTR.setTransform(  StampedTransform (tf::Transform(tf::Quaternion(0,0,0,1), tf::Vector3(0,0,0)), ros::Time().fromNSec(4000),  "parent", "b"));
-  mTR.setTransform(  StampedTransform (tf::Transform(tf::Quaternion(0,0,0,1), tf::Vector3(0,0,0)), ros::Time().fromNSec(3000),  "b", "c"));
-  mTR.setTransform(  StampedTransform (tf::Transform(tf::Quaternion(0,0,0,1), tf::Vector3(0,0,0)), ros::Time().fromNSec(9000),  "c", "d"));
-  mTR.setTransform(  StampedTransform (tf::Transform(tf::Quaternion(0,0,0,1), tf::Vector3(0,0,0)), ros::Time().fromNSec(5000),  "f", "e"));
-
-  //shared parent
-  mTR.getLatestCommonTime("a", "b",t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(3000));
-
-  //two degrees
-  mTR.getLatestCommonTime("a", "c", t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(3000));
-  //reversed
-  mTR.getLatestCommonTime("c", "a", t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(3000));
-
-  //three degrees
-  mTR.getLatestCommonTime("a", "d", t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(3000));
-  //reversed
-  mTR.getLatestCommonTime("d", "a", t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(3000));
-
-  //disconnected tree
-  mTR.getLatestCommonTime("e", "f", t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(5000));
-  //reversed order
-  mTR.getLatestCommonTime("f", "e", t, NULL);
-  EXPECT_EQ(t, ros::Time().fromNSec(5000));
-
-  /*
-  // DISABLE EXTRAPOLATION TESTS, NOT SUPPORTED
-
-  mTR.setExtrapolationLimit(ros::Duration().fromNSec(20000));
-
-  //check timestamps resulting
-  tf::Stamped<tf::Point> output, output2;
-  try
-  {
-    mTR.transformPoint( "parent", Stamped<Point>(Point(1,1,1), ros::Time(), "b"), output);
-    mTR.transformPoint( "a", ros::Time(),Stamped<Point>(Point(1,1,1), ros::Time(), "b"), "c",  output2);
-  }
-  catch (tf::TransformException &ex)
-  {
-    printf("%s\n", ex.what());
-    EXPECT_FALSE("Shouldn't get this Exception");
-  }
-
-  EXPECT_EQ(output.stamp_, ros::Time().fromNSec(4000));
-  EXPECT_EQ(output2.stamp_, ros::Time().fromNSec(3000));
-  */
-
-
-  //zero length lookup zero time
-  ros::Time now1 = ros::Time::now();
-  ros::Time time_output;
-  mTR.getLatestCommonTime("a", "a", time_output, NULL);
-  EXPECT_LE(now1.toSec(), time_output.toSec());
-  EXPECT_LE(time_output.toSec(), ros::Time::now().toSec());
-
-
-}
 
 TEST(tf, RepeatedTimes)
 {
@@ -2029,11 +1948,14 @@ TEST(tf, frameExists)
   qt1.setRPY(1,0,0);
   mTR.setTransform(  StampedTransform (tf::Transform(qt1, tf::Vector3(0,0,0)), ros::Time().fromNSec(4000),  "/parent", "/b"));
 
+
+  /* Not applicable anymore with tf2
   // test with fully qualified name
   EXPECT_TRUE(mTR.frameExists("/b"));
   EXPECT_TRUE(mTR.frameExists("/parent"));
   EXPECT_FALSE(mTR.frameExists("/other"));
   EXPECT_FALSE(mTR.frameExists("/frame"));
+  */
 
   //Test with resolveping
   EXPECT_TRUE(mTR.frameExists("b"));
@@ -2045,11 +1967,13 @@ TEST(tf, frameExists)
   qt2.setRPY(1,1,0);
   mTR.setTransform(  StampedTransform (tf::Transform(qt2, tf::Vector3(0,0,0)), ros::Time().fromNSec(4000),  "/frame", "/other"));
 
+  /* Not applicable anymore with tf2
   // test with fully qualified name
   EXPECT_TRUE(mTR.frameExists("/b"));
   EXPECT_TRUE(mTR.frameExists("/parent"));
   EXPECT_TRUE(mTR.frameExists("/other"));
   EXPECT_TRUE(mTR.frameExists("/frame"));
+  */
   
   //Test with resolveping
   EXPECT_TRUE(mTR.frameExists("b"));
@@ -2059,20 +1983,6 @@ TEST(tf, frameExists)
 
 }
 
-TEST(tf, resolve)
-{
-  //no prefix
-  EXPECT_STREQ("/id", tf::resolve("","id").c_str());
-  //prefix w/o /
-  EXPECT_STREQ("/asdf/id", tf::resolve("asdf","id").c_str());
-  //prefix w /
-  EXPECT_STREQ("/asdf/id", tf::resolve("/asdf","id").c_str());
-  // frame_id w / -> no prefix
-  EXPECT_STREQ("/id", tf::resolve("asdf","/id").c_str());
-  // frame_id w / -> no prefix
-  EXPECT_STREQ("/id", tf::resolve("/asdf","/id").c_str());
-
-}
 
 TEST(tf, canTransform)
 {
@@ -2198,10 +2108,10 @@ TEST(tf, lookupTransform)
   try
   {
     //confirm zero length list disconnected will return true
-    mTR.lookupTransform("some_frame","some_frame", zero_time, output);
-    mTR.lookupTransform("some_frame","some_frame", old_time, output);
-    mTR.lookupTransform("some_frame","some_frame", valid_time, output);
-    mTR.lookupTransform("some_frame","some_frame", future_time, output);
+    mTR.lookupTransform("some_frame1","some_frame1", zero_time, output);
+    mTR.lookupTransform("some_frame2","some_frame2", old_time, output);
+    mTR.lookupTransform("some_frame3","some_frame3", valid_time, output);
+    mTR.lookupTransform("some_frame4","some_frame4", future_time, output);
     mTR.lookupTransform("child","child", future_time, output);
     mTR.lookupTransform("other_child","other_child", future_time, output);
 
@@ -2336,14 +2246,16 @@ TEST(tf, lookupTransform)
   }
   
 
-  //make sure zero goes to now for zero length
+  //zero time goes to latest known value for frames
   try
   {
-    ros::Time now1 = ros::Time::now();
-
+  double epsilon = 1e-6;
     mTR.lookupTransform("a", "a", ros::Time(),output);
-    EXPECT_LE(now1.toSec(), output.stamp_.toSec());
-    EXPECT_LE(output.stamp_.toSec(), ros::Time::now().toSec());
+    EXPECT_NEAR(ros::Time().toSec(), output.stamp_.toSec(), epsilon);
+    mTR.lookupTransform("child", "child", ros::Time().fromSec(15),output);
+    EXPECT_NEAR(15.0, output.stamp_.toSec(), epsilon);
+    mTR.lookupTransform("child", "child", ros::Time(),output);
+    EXPECT_NEAR(19.0, output.stamp_.toSec(), epsilon);
   }
   catch (tf::TransformException &ex)
   {
@@ -2365,18 +2277,18 @@ TEST(tf, getFrameStrings)
   std::vector <std::string> frames_string;
   mTR.getFrameStrings(frames_string);
   ASSERT_EQ(frames_string.size(), (unsigned)2);
-  EXPECT_STREQ(frames_string[0].c_str(), std::string("/b").c_str());
-  EXPECT_STREQ(frames_string[1].c_str(), std::string("/parent").c_str());
+  EXPECT_STREQ(frames_string[0].c_str(), std::string("b").c_str());
+  EXPECT_STREQ(frames_string[1].c_str(), std::string("parent").c_str());
 
 
   mTR.setTransform(  StampedTransform (tf::Transform(qt2, tf::Vector3(0,0,0)), ros::Time().fromNSec(4000),  "/frame", "/other"));
   
   mTR.getFrameStrings(frames_string);
   ASSERT_EQ(frames_string.size(), (unsigned)4);
-  EXPECT_STREQ(frames_string[0].c_str(), std::string("/b").c_str());
-  EXPECT_STREQ(frames_string[1].c_str(), std::string("/parent").c_str());
-  EXPECT_STREQ(frames_string[2].c_str(), std::string("/other").c_str());
-  EXPECT_STREQ(frames_string[3].c_str(), std::string("/frame").c_str());
+  EXPECT_STREQ(frames_string[0].c_str(), std::string("b").c_str());
+  EXPECT_STREQ(frames_string[1].c_str(), std::string("parent").c_str());
+  EXPECT_STREQ(frames_string[2].c_str(), std::string("other").c_str());
+  EXPECT_STREQ(frames_string[3].c_str(), std::string("frame").c_str());
 
 }
 
