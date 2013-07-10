@@ -1,6 +1,6 @@
 <package>
   <name>tf</name>
-  <version>1.10.1</version>
+  <version>1.10.2</version>
   <description>
 
 tf is a package that lets the user keep track of multiple coordinate
@@ -18,7 +18,7 @@ any desired point in time.
   <license>BSD</license>
   <url>http://www.ros.org/wiki/tf</url>
 
-  <buildtool_depend>catkin</buildtool_depend>
+  <buildtool_depend version_gte="0.5.68">catkin</buildtool_depend>
 
   <build_depend>angles</build_depend>
   <build_depend>geometry_msgs</build_depend>
