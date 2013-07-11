@@ -1,3 +1,3 @@
 [git-buildpackage]
-upstream-branch=release/tf/1.9.29
+upstream-branch=@(release_tag)
 upstream-tree=branch
