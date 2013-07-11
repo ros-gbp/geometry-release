@@ -4,11 +4,7 @@ project(tf)
 find_package(catkin REQUIRED)
 
 find_package(Boost REQUIRED thread signals)
-find_package(catkin REQUIRED genmsg geometry_msgs message_filters rosconsole roscpp rostest rostime sensor_msgs std_msgs)
-catkin_package(DEPENDS Boost geometry_msgs message_filters rosconsole roscpp rostime sensor_msgs std_msgs
-               INCLUDE_DIRS include
-               LIBRARIES ${PROJECT_NAME}
-)
+find_package(catkin REQUIRED angles geometry_msgs message_filters message_generation rosconsole roscpp rostest rostime sensor_msgs std_msgs)
 
 catkin_python_setup()
 
@@ -21,8 +17,13 @@ link_directories(${catkin_LIBRARY_DIRS})
 add_message_files(DIRECTORY msg FILES tfMessage.msg)
 add_service_files(DIRECTORY srv FILES FrameGraph.srv)
 
-generate_messages(DEPENDENCIES std_msgs geometry_msgs)
+generate_messages(DEPENDENCIES geometry_msgs sensor_msgs std_msgs)
 
+catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES ${PROJECT_NAME}
+  CATKIN_DEPENDS geometry_msgs message_filters message_runtime roscpp sensor_msgs std_msgs
+)
 
 add_library(${PROJECT_NAME} src/tf.cpp src/transform_listener.cpp src/cache.cpp src/transform_broadcaster.cpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES})
@@ -88,6 +89,7 @@ add_executable(static_transform_publisher src/static_transform_publisher.cpp)
 target_link_libraries(static_transform_publisher ${PROJECT_NAME})
 
 
+set(Python_ADDITIONAL_VERSIONS 2.7)
 find_package(PythonLibs REQUIRED)
 include_directories(${PYTHON_INCLUDE_PATH})
 
@@ -115,7 +117,7 @@ add_dependencies(pytf_py ${PROJECT_NAME}_gencpp)
 
 find_package(PythonLibs REQUIRED)
 set_target_properties(pytf_py PROPERTIES OUTPUT_NAME tf PREFIX "_" SUFFIX ".so"
-  LIBRARY_OUTPUT_DIRECTORY ${CATKIN_BUILD_PREFIX}/${PYTHON_INSTALL_DIR}/tf)
+  LIBRARY_OUTPUT_DIRECTORY ${CATKIN_DEVEL_PREFIX}/${PYTHON_INSTALL_DIR}/tf)
 
 # target_link_libraries(pytf_py ${PROJECT_NAME})
 # add_compile_flags(pytf_py -g -Wno-missing-field-initializers)
@@ -138,10 +140,17 @@ install(TARGETS ${PROJECT_NAME} tf_echo tf_empty_listener tf_change_notifier tf_
 install(TARGETS pytf_py
   LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/${PYTHON_INSTALL_DIR}/tf)
 
+# Install rosrun-able scripts
+install(PROGRAMS 
+  scripts/bullet_migration_sed.py
+  scripts/tf_remap
+  scripts/view_frames
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION} )
+
 # Need to install python msg and srv directories manually because genmsg
 # specifically avoids installing python message code if catkin_python_setup()
 # has been used.  See https://github.com/ros/genmsg/issues/10
-install(DIRECTORY ${CATKIN_BUILD_PREFIX}/${PYTHON_INSTALL_DIR}/tf/msg
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${PYTHON_INSTALL_DIR}/tf/msg
   DESTINATION ${CMAKE_INSTALL_PREFIX}/${PYTHON_INSTALL_DIR}/tf)
-install(DIRECTORY ${CATKIN_BUILD_PREFIX}/${PYTHON_INSTALL_DIR}/tf/srv
+install(DIRECTORY ${CATKIN_DEVEL_PREFIX}/${PYTHON_INSTALL_DIR}/tf/srv
   DESTINATION ${CMAKE_INSTALL_PREFIX}/${PYTHON_INSTALL_DIR}/tf)
