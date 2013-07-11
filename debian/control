@@ -1,0 +1,12 @@
+Source: ros-groovy-tf
+Section: misc
+Priority: extra
+Maintainer: "Tully Foote <tfoote@willowgarage.com>"
+Build-Depends: debhelper (>= 7.0.50~), ros-groovy-angles, ros-groovy-catkin, ros-groovy-geometry-msgs, ros-groovy-message-filters, ros-groovy-message-generation, ros-groovy-rosconsole, ros-groovy-roscpp, ros-groovy-rostest, ros-groovy-sensor-msgs, ros-groovy-std-msgs
+Homepage: http://www.ros.org/wiki/tf
+Standards-Version: 3.9.2
+
+Package: ros-groovy-tf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-groovy-geometry-msgs, ros-groovy-message-filters, ros-groovy-message-runtime, ros-groovy-roscpp, ros-groovy-sensor-msgs, ros-groovy-std-msgs
+Description: tf is a package that lets the user keep track of multiple coordinate frames over time. tf maintains the relationship between coordinate frames in a tree structure buffered in time, and lets the user transform points, vectors, etc between any two coordinate frames at any desired point in time.
