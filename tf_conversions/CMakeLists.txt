@@ -16,9 +16,6 @@ catkin_package(
 include_directories(SYSTEM ${EIGEN_INCLUDE_DIRS})
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-# Needed due to no full filename in orocos_kdl pkg-config export
-link_directories(${orocos_kdl_LIBRARY_DIRS})
-
 add_library(${PROJECT_NAME}
   src/tf_kdl.cpp
   src/tf_eigen.cpp
@@ -26,20 +23,12 @@ add_library(${PROJECT_NAME}
 add_dependencies(${PROJECT_NAME} geometry_msgs_gencpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
-# Tests
-if(CATKIN_ENABLE_TESTING)
-
-
 catkin_add_gtest(test_eigen_tf test/test_eigen_tf.cpp)
-target_link_libraries(test_eigen_tf ${PROJECT_NAME})
-
 catkin_add_gtest(test_kdl_tf test/test_kdl_tf.cpp)
+target_link_libraries(test_eigen_tf ${PROJECT_NAME})
 target_link_libraries(test_kdl_tf ${PROJECT_NAME})
 
 catkin_add_nosetests(test/posemath.py)
-
-endif()
-
 
 install(DIRECTORY include/${PROJECT_NAME}/
   DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION})

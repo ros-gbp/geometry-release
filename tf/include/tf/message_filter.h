@@ -52,10 +52,10 @@
 #include <message_filters/simple_filter.h>
 
 #define TF_MESSAGEFILTER_DEBUG(fmt, ...) \
-  ROS_DEBUG_NAMED("message_filter", "MessageFilter [target=%s]: " fmt, getTargetFramesString().c_str(), __VA_ARGS__)
+  ROS_DEBUG_NAMED("message_filter", "MessageFilter [target=%s]: "fmt, getTargetFramesString().c_str(), __VA_ARGS__)
 
 #define TF_MESSAGEFILTER_WARN(fmt, ...) \
-  ROS_WARN_NAMED("message_filter", "MessageFilter [target=%s]: " fmt, getTargetFramesString().c_str(), __VA_ARGS__)
+  ROS_WARN_NAMED("message_filter", "MessageFilter [target=%s]: "fmt, getTargetFramesString().c_str(), __VA_ARGS__)
 
 namespace tf
 {
@@ -208,6 +208,7 @@ public:
     std::stringstream ss;
     for (std::vector<std::string>::iterator it = target_frames_.begin(); it != target_frames_.end(); ++it)
     {
+      *it = tf::resolve(tf_.getTFPrefix(), *it);
       ss << *it << " ";
     }
     target_frames_string_ = ss.str();
@@ -282,7 +283,6 @@ public:
    */
   void add(const MConstPtr& message)
   {
-    
     boost::shared_ptr<std::map<std::string, std::string> > header(new std::map<std::string, std::string>);
     (*header)["callerid"] = "unknown";
     add(MEvent(message, header, ros::Time::now()));
@@ -350,6 +350,17 @@ private:
       return true;
     }
 
+    if (frame_id[0] != '/')
+    {
+      std::string unresolved = frame_id;
+      frame_id = tf::resolve(tf_.getTFPrefix(), frame_id);
+
+      if (!warned_about_unresolved_name_)
+      {
+        warned_about_unresolved_name_ = true;
+        ROS_WARN("Message from [%s] has a non-fully-qualified frame_id [%s]. Resolved locally to [%s].  This is will likely not work in multi-robot systems.  This message will only print once.", callerid.c_str(), unresolved.c_str(), frame_id.c_str());
+      }
+    }
 
     //Throw out messages which are too old
     //! \todo combine getLatestCommonTime call with the canTransform call
@@ -362,7 +373,6 @@ private:
         ros::Time latest_transform_time ;
 
         tf_.getLatestCommonTime(frame_id, target_frame, latest_transform_time, 0) ;
-        
         if (stamp + tf_.getCacheLength() < latest_transform_time)
         {
           ++failed_out_the_back_count_;
@@ -542,7 +552,6 @@ private:
   FailureSignal failure_signal_;
   boost::mutex failure_signal_mutex_;
 };
-
 
 } // namespace tf
 
