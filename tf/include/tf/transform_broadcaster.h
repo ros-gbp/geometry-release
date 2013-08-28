@@ -36,9 +36,14 @@
 #include "tf/tf.h"
 #include "tf/tfMessage.h"
 
-#include <tf2_ros/transform_broadcaster.h>
-
-
+//Forward declaring not working
+#include "ros/ros.h"
+/*namespace ros
+{
+class NodeHandle;
+class Publisher;
+}
+*/
 namespace tf
 {
 
@@ -69,8 +74,11 @@ public:
   void sendTransform(const std::vector<geometry_msgs::TransformStamped> & transforms);
 
 private:
+  /// Internal reference to ros::Node
+  ros::NodeHandle node_;
+  ros::Publisher publisher_;
 
-  tf2_ros::TransformBroadcaster tf2_broadcaster_;
+  std::string tf_prefix_;
 
 };
 
