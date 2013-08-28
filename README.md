@@ -1,3 +1,27 @@
+## geometry - 1.10.6-0
+
+User `tfoote@BigFoote` released the packages in the `geometry` repository by running `/usr/bin/bloom-release geometry --rosdistro hydro --track hydro` on `Wed, 28 Aug 2013 08:10:43 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+- rosdistro version: `1.10.5-0`
+- old version: `1.10.5-0`
+- new version: `1.10.6-0`
+
+Versions of tools used:
+- bloom version: `0.4.4`
+- catkin_pkg version: `0.1.19`
+- rosdep version: `0.10.21`
+- rosdistro version: `0.2.13`
+- vcstools version: `0.1.31`
+
+
 ## geometry - 1.9.31-0
 
 User `tfoote@BigFoote` released the packages in the `geometry` repository by running `/usr/bin/bloom-release geometry --rosdistro groovy --track groovy` on `Wed, 28 Aug 2013 04:00:30 -0000`
