@@ -1,3 +1,27 @@
+## geometry - 1.10.7-0
+
+User `tfoote@stitch` released the packages in the `geometry` repository by running `/usr/bin/bloom-release geometry --track hydro --rosdistro hydro` on `Fri, 27 Dec 2013 22:35:36 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+- rosdistro version: `1.10.6-0`
+- old version: `1.10.6-0`
+- new version: `1.10.7-0`
+
+Versions of tools used:
+- bloom version: `0.4.4`
+- catkin_pkg version: `0.1.24`
+- rosdep version: `0.10.24`
+- rosdistro version: `0.2.20`
+- vcstools version: `0.1.33`
+
+
 ## geometry - 1.10.6-0
 
 User `tfoote@BigFoote` released the packages in the `geometry` repository by running `/usr/bin/bloom-release geometry --rosdistro hydro --track hydro` on `Wed, 28 Aug 2013 08:10:43 -0000`
