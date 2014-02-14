@@ -2,6 +2,9 @@
 Changelog for package tf_conversions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.0 (2014-02-14)
+-------------------
+
 1.10.8 (2014-02-01)
 -------------------
 * add missing runtime dependency on python_orocos_kdl for the pyKDL
