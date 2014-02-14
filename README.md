@@ -1,3 +1,28 @@
+## geometry - 1.11.0-0
+
+User `tfoote@BigFoote` released the packages in the `geometry` repository by running `/usr/bin/bloom-release geometry --track indigo --rosdistro indigo --new-track` on `Fri, 14 Feb 2014 23:22:21 -0000`
+
+The `tf` package was released.
+
+These packages were explicitly ignored:
+- `eigen_conversions`
+- `kdl_conversions`
+- `tf_conversions`
+- `geometry`
+
+Version of package(s) in repository `geometry`:
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.11.0-0`
+
+Versions of tools used:
+- bloom version: `0.4.9`
+- catkin_pkg version: `0.1.25`
+- rosdep version: `0.10.25`
+- rosdistro version: `0.3.3`
+- vcstools version: `0.1.33`
+
+
 ## geometry - 1.10.8-0
 
 User `tfoote@BigFoote` released the packages in the `geometry` repository by running `/usr/bin/bloom-release geometry --track hydro --rosdistro hydro` on `Sat, 01 Feb 2014 08:24:45 -0000`
