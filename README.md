@@ -1,3 +1,27 @@
+## geometry (indigo) - 1.11.0-1
+
+User `tfoote@BigFoote` released the packages in the `geometry` repository into the `indigo` distro by running `/home/tfoote/work/bloomenv/bin/bloom-release --rosdistro indigo -t indigo geometry` on `Thu, 20 Feb 2014 00:15:59 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+- rosdistro version: `1.11.0-0`
+- old version: `1.11.0-0`
+- new version: `1.11.0-1`
+
+Versions of tools used:
+- bloom version: `0.4.9`
+- catkin_pkg version: `0.1.26`
+- rosdep version: `0.10.25`
+- rosdistro version: `0.3.4`
+- vcstools version: `0.1.33`
+
+
 ## geometry - 1.11.0-0
 
 User `tfoote@BigFoote` released the packages in the `geometry` repository by running `/usr/bin/bloom-release geometry --track indigo --rosdistro indigo --new-track` on `Fri, 14 Feb 2014 23:22:21 -0000`
