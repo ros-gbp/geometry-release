@@ -2,6 +2,9 @@
 Changelog for package tf
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.1 (2014-02-23)
+-------------------
+
 1.11.0 (2014-02-14)
 -------------------
 * TF uses ros::MessageEvent to get connection information
