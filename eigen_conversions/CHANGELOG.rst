@@ -2,6 +2,11 @@
 Changelog for package eigen_conversions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.2 (2014-02-25)
+-------------------
+* alphabetization and updating cmake to find Eigen
+* Contributors: Tully Foote
+
 1.11.1 (2014-02-23)
 -------------------
 * add dep on cmake_modules for finding eigen
