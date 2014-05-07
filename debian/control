@@ -1,0 +1,12 @@
+Source: ros-indigo-geometry
+Section: misc
+Priority: extra
+Maintainer: Tully Foote <tfoote@willowgarage.com>
+Build-Depends: debhelper (>= 7.0.50~), ros-indigo-catkin
+Homepage: http://www.ros.org/wiki/geometry
+Standards-Version: 3.9.2
+
+Package: ros-indigo-geometry
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-angles, ros-indigo-eigen-conversions, ros-indigo-kdl-conversions, ros-indigo-tf, ros-indigo-tf-conversions
+Description: Geometry Library
