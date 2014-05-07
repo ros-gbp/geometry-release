@@ -2,6 +2,9 @@
 Changelog for package tf_conversions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.3 (2014-05-07)
+-------------------
+
 1.11.2 (2014-02-25)
 -------------------
 * fixing eigen usage in tf_conversions
