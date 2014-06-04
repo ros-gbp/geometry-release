@@ -1,6 +1,6 @@
 <package>
   <name>eigen_conversions</name>
-  <version>1.11.3</version>
+  <version>1.10.8</version>
   <description>
 
      Conversion functions between:
@@ -10,14 +10,13 @@
   </description>
   <author>Stuart Glaser</author>
   <author>Adam Leeper</author>
-  <maintainer email="tfoote@osrfoundation.org">Tully Foote</maintainer>
+  <maintainer email="tfoote@willowgarage.com">Tully Foote</maintainer>
 
   <license>BSD</license>
   <url>http://ros.org/wiki/eigen_conversions</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
-  <build_depend>cmake_modules</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>eigen</build_depend>
   <build_depend>orocos_kdl</build_depend>

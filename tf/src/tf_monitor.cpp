@@ -63,10 +63,23 @@ public:
   tf::tfMessage message_;
 
   boost::mutex map_lock_;
-  void callback(const ros::MessageEvent<tf::tfMessage const>& msg_evt)
+  void callback(const tf::tfMessageConstPtr& msg_ptr)
   {
-    const tf::tfMessage& message = *(msg_evt.getConstMessage());
-    std::string authority = msg_evt.getPublisherName(); // lookup the authority 
+    const tf::tfMessage& message = *msg_ptr;
+    //Lookup the authority 
+    std::string authority;
+    std::map<std::string, std::string>* msg_header_map = message.__connection_header.get();
+    std::map<std::string, std::string>::iterator it = msg_header_map->find("callerid");
+    if (it == msg_header_map->end())
+    {
+      ROS_WARN("Message recieved without callerid");
+      authority = "no callerid";
+    }
+    else
+    {
+      authority = it->second;
+    }
+
 
     double average_offset = 0;
     boost::mutex::scoped_lock my_lock(map_lock_);  

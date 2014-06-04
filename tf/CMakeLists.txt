@@ -3,8 +3,8 @@ project(tf)
 
 find_package(catkin REQUIRED)
 
-find_package(Boost COMPONENTS thread signals system REQUIRED)
-find_package(catkin COMPONENTS angles geometry_msgs message_filters message_generation rosconsole roscpp rostime sensor_msgs std_msgs tf2_ros REQUIRED)
+find_package(Boost REQUIRED thread signals)
+find_package(catkin REQUIRED angles geometry_msgs message_filters message_generation rosconsole roscpp rostest rostime sensor_msgs std_msgs tf2_ros)
 
 catkin_python_setup()
 
@@ -48,8 +48,6 @@ target_link_libraries(static_transform_publisher ${PROJECT_NAME})
 # Tests
 if(CATKIN_ENABLE_TESTING)
 
-find_package(rostest)
-
 catkin_add_gtest(tf_unittest test/tf_unittest.cpp)
 target_link_libraries(tf_unittest ${PROJECT_NAME})
 
@@ -57,7 +55,7 @@ catkin_add_gtest(tf_quaternion_unittest test/quaternion.cpp)
 target_link_libraries(tf_quaternion_unittest ${PROJECT_NAME})
 
 catkin_add_gtest(test_transform_datatypes test/test_transform_datatypes.cpp)
-target_link_libraries(test_transform_datatypes ${PROJECT_NAME} ${Boost_LIBRARIES})
+target_link_libraries(tf_unittest ${PROJECT_NAME})
 
 add_executable(transform_listener_unittest test/transform_listener_unittest.cpp)
 target_link_libraries(transform_listener_unittest ${PROJECT_NAME} ${GTEST_LIBRARIES})
