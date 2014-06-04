@@ -1,3 +1,27 @@
+## geometry (hydro) - 1.10.8-1
+
+The packages in the `geometry` repository were released into the `hydro` distro by running `/usr/bin/bloom-release geometry -t hydro -r hydro` on `Wed, 04 Jun 2014 07:14:38 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+- rosdistro version: `1.10.8-0`
+- old version: `1.10.8-0`
+- new version: `1.10.8-1`
+
+Versions of tools used:
+- bloom version: `0.5.9`
+- catkin_pkg version: `0.2.2`
+- rosdep version: `0.10.27`
+- rosdistro version: `0.3.5`
+- vcstools version: `0.1.35`
+
+
 ## geometry (indigo) - 1.11.3-1
 
 The packages in the `geometry` repository were released into the `indigo` distro by running `/usr/bin/bloom-release geometry -t indigo -r indigo` on `Wed, 21 May 2014 01:54:20 -0000`
