@@ -1,0 +1,12 @@
+Source: ros-hydro-kdl-conversions
+Section: misc
+Priority: extra
+Maintainer: Tully Foote <tfoote@willowgarage.com>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin, ros-hydro-geometry-msgs, ros-hydro-orocos-kdl
+Homepage: http://ros.org/wiki/kdl_conversions
+Standards-Version: 3.9.2
+
+Package: ros-hydro-kdl-conversions
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-geometry-msgs, ros-hydro-orocos-kdl
+Description: Conversion functions between KDL and geometry_msgs types.
