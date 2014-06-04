@@ -1,0 +1,12 @@
+Source: ros-hydro-eigen-conversions
+Section: misc
+Priority: extra
+Maintainer: Tully Foote <tfoote@willowgarage.com>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, ros-hydro-catkin, ros-hydro-geometry-msgs, ros-hydro-orocos-kdl, ros-hydro-std-msgs
+Homepage: http://ros.org/wiki/eigen_conversions
+Standards-Version: 3.9.2
+
+Package: ros-hydro-eigen-conversions
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, ros-hydro-geometry-msgs, ros-hydro-orocos-kdl, ros-hydro-std-msgs
+Description: Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
