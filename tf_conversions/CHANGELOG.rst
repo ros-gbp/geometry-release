@@ -2,6 +2,11 @@
 Changelog for package tf_conversions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.4 (2014-12-23)
+-------------------
+* Update package.xml
+* Contributors: David Lu!!
+
 1.11.3 (2014-05-07)
 -------------------
 
