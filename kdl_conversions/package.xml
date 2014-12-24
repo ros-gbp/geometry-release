@@ -1,13 +1,13 @@
 <package>
   <name>kdl_conversions</name>
-  <version>1.11.3</version>
+  <version>1.11.4</version>
   <description>
 
      Conversion functions between KDL and geometry_msgs types.
 
   </description>
   <author>Adam Leeper</author>
-  <maintainer email="tfoote@willowgarage.com">Tully Foote</maintainer>
+  <maintainer email="tfoote@osrfoundation.org">Tully Foote</maintainer>
 
   <license>BSD</license>
   <url>http://ros.org/wiki/kdl_conversions</url>
