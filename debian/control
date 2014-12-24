@@ -1,0 +1,12 @@
+Source: ros-indigo-tf
+Section: misc
+Priority: extra
+Maintainer: Tully Foote <tfoote@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-angles, ros-indigo-catkin (>= 0.6.4), ros-indigo-geometry-msgs, ros-indigo-message-filters, ros-indigo-message-generation, ros-indigo-rosconsole, ros-indigo-roscpp, ros-indigo-rostest, ros-indigo-sensor-msgs, ros-indigo-std-msgs, ros-indigo-tf2 (>= 0.5.4), ros-indigo-tf2-ros (>= 0.5.4)
+Homepage: http://www.ros.org/wiki/tf
+Standards-Version: 3.9.2
+
+Package: ros-indigo-tf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, graphviz, ros-indigo-geometry-msgs, ros-indigo-message-filters (>= 1.11.1), ros-indigo-message-runtime, ros-indigo-rosconsole, ros-indigo-roscpp, ros-indigo-roswtf, ros-indigo-sensor-msgs, ros-indigo-std-msgs, ros-indigo-tf2 (>= 0.4.5), ros-indigo-tf2-ros (>= 0.4.5)
+Description: tf is a package that lets the user keep track of multiple coordinate frames over time. tf maintains the relationship between coordinate frames in a tree structure buffered in time, and lets the user transform points, vectors, etc between any two coordinate frames at any desired point in time.
