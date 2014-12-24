@@ -2,6 +2,25 @@
 Changelog for package tf_conversions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.4 (2014-12-23)
+-------------------
+* Update package.xml
+* Contributors: David Lu!!
+
+1.11.3 (2014-05-07)
+-------------------
+
+1.11.2 (2014-02-25)
+-------------------
+* fixing eigen usage in tf_conversions
+* Contributors: Tully Foote
+
+1.11.1 (2014-02-23)
+-------------------
+
+1.11.0 (2014-02-14)
+-------------------
+
 1.10.8 (2014-02-01)
 -------------------
 * add missing runtime dependency on python_orocos_kdl for the pyKDL

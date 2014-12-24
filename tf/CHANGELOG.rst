@@ -2,6 +2,42 @@
 Changelog for package tf
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.11.4 (2014-12-23)
+-------------------
+* Install static lib and remove test for Android
+* Larger default queue size in broadcaster
+  With queue_size=1 when two transforms are sent in quick succession,
+  the second is often lost. The C++ code uses a default queue_size of
+  100, so switch to that default here as well. If that is not appropriate,
+  a queue_size constructor argument is provided.
+* Update package.xml
+* add rate parameter to tf_echo
+* Added check for normalized quaternion in roswtf plugin
+* Contributors: David Lu!!, Gary Servin, Kevin Hallenbeck, Stephan Wirth, contradict
+
+1.11.3 (2014-05-07)
+-------------------
+* convert to boost signals2 following `ros/ros_comm#267 <https://github.com/ros/ros_comm/issues/267>`_ Fixes `#23 <https://github.com/ros/geometry/issues/23>`_. Requires `ros/geometry_experimental#61 <https://github.com/ros/geometry_experimental/issues/61>`_ as well.
+* add rospy publisher queue_size argument
+  `ros/ros_comm#169 <https://github.com/ros/ros_comm/issues/169>`_
+* add queue_size to tf publisher
+  `ros/ros_comm#169 <https://github.com/ros/ros_comm/issues/169>`_
+* make rostest in CMakeLists optional (`ros/rosdistro#3010 <https://github.com/ros/rosdistro/issues/3010>`_)
+* Contributors: Lukas Bulwahn, Tully Foote
+
+1.11.2 (2014-02-25)
+-------------------
+* fixing test linking
+* Contributors: Tully Foote
+
+1.11.1 (2014-02-23)
+-------------------
+
+1.11.0 (2014-02-14)
+-------------------
+* TF uses ros::MessageEvent to get connection information
+* Contributors: Kevin Watts, Tully Foote
+
 1.10.8 (2014-02-01)
 -------------------
 * Port groovy-devel patch to hydro-devel
