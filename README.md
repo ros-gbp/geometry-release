@@ -1,3 +1,29 @@
+## geometry (jade) - 1.11.5-0
+
+The packages in the `geometry` repository were released into the `jade` distro by running `/usr/bin/bloom-release -t jade -r jade geometry` on `Wed, 18 Mar 2015 00:38:08 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+- upstream repository: https://github.com/ros/geometry.git
+- release repository: https://github.com/ros-gbp/geometry-release.git
+- rosdistro version: `1.11.4-0`
+- old version: `1.11.4-0`
+- new version: `1.11.5-0`
+
+Versions of tools used:
+- bloom version: `0.5.19`
+- catkin_pkg version: `0.2.7`
+- rosdep version: `0.11.2`
+- rosdistro version: `0.4.1`
+- vcstools version: `0.1.36`
+
+
 ## geometry (indigo) - 1.11.5-0
 
 The packages in the `geometry` repository were released into the `indigo` distro by running `/usr/bin/bloom-release -t indigo -r indigo geometry` on `Wed, 18 Mar 2015 00:34:57 -0000`
