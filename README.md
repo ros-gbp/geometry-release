@@ -1,3 +1,31 @@
+## geometry (kinetic) - 1.11.8-0
+
+The packages in the `geometry` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release geometry -t kinetic -r kinetic --new-track` on `Thu, 31 Mar 2016 21:51:05 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+
+- upstream repository: https://github.com/ros/geometry.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.11.8-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.21`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.5`
+- vcstools version: `0.1.38`
+
+
 ## geometry (indigo) - 1.11.8-0
 
 The packages in the `geometry` repository were released into the `indigo` distro by running `/usr/bin/bloom-release geometry --track indigo --rosdistro indigo` on `Fri, 04 Mar 2016 20:13:55 -0000`
