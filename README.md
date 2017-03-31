@@ -1,3 +1,31 @@
+## geometry (lunar) - 1.11.8-0
+
+The packages in the `geometry` repository were released into the `lunar` distro by running `/usr/bin/bloom-release -t lunar -r lunar geometry` on `Fri, 31 Mar 2017 03:03:18 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+
+- upstream repository: https://github.com/ros/geometry.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.11.8-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.25`
+- catkin_pkg version: `0.3.1`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.6.1`
+- vcstools version: `0.1.39`
+
+
 ## geometry (kinetic) - 1.11.8-0
 
 The packages in the `geometry` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release geometry -t kinetic -r kinetic --new-track` on `Thu, 31 Mar 2016 21:51:05 -0000`
