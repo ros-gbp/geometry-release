@@ -1,0 +1,13 @@
+Source: ros-kinetic-tf
+Section: misc
+Priority: extra
+Maintainer: Tully Foote <tfoote@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-kinetic-angles, ros-kinetic-catkin (>= 0.6.4), ros-kinetic-geometry-msgs, ros-kinetic-message-filters, ros-kinetic-message-generation, ros-kinetic-rosconsole, ros-kinetic-roscpp, ros-kinetic-rostest, ros-kinetic-rostime, ros-kinetic-rosunit, ros-kinetic-sensor-msgs, ros-kinetic-std-msgs, ros-kinetic-tf2-ros (>= 0.5.16)
+Homepage: http://www.ros.org/wiki/tf
+Standards-Version: 3.9.2
+
+Package: ros-kinetic-tf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, graphviz, ros-kinetic-geometry-msgs, ros-kinetic-message-filters (>= 1.11.1), ros-kinetic-message-runtime, ros-kinetic-rosconsole, ros-kinetic-roscpp, ros-kinetic-roswtf, ros-kinetic-sensor-msgs, ros-kinetic-std-msgs, ros-kinetic-tf2-ros (>= 0.5.16)
+Description: tf is a package that lets the user keep track of multiple coordinate frames over time.
+ tf maintains the relationship between coordinate frames in a tree structure buffered in time, and lets the user transform points, vectors, etc between any two coordinate frames at any desired point in time. Migration: Since ROS Hydro, tf has been &quot;deprecated&quot; in favor of tf2. tf2 is an iteration on tf providing generally the same feature set more efficiently. As well as adding a few new features. As tf2 is a major change the tf API has been maintained in its current form. Since tf2 has a superset of the tf features with a subset of the dependencies the tf implementation has been removed and replaced with calls to tf2 under the hood. This will mean that all users will be compatible with tf2. It is recommended for new work to use tf2 directly as it has a cleaner interface. However tf will continue to be supported for through at least J Turtle.
