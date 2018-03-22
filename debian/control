@@ -1,0 +1,12 @@
+Source: ros-melodic-eigen-conversions
+Section: misc
+Priority: extra
+Maintainer: Tully Foote <tfoote@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), libeigen3-dev, ros-melodic-catkin, ros-melodic-cmake-modules, ros-melodic-geometry-msgs, ros-melodic-orocos-kdl, ros-melodic-std-msgs
+Homepage: http://ros.org/wiki/eigen_conversions
+Standards-Version: 3.9.2
+
+Package: ros-melodic-eigen-conversions
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libeigen3-dev, ros-melodic-geometry-msgs, ros-melodic-orocos-kdl, ros-melodic-std-msgs
+Description: Conversion functions between: - Eigen and KDL - Eigen and geometry_msgs.
