@@ -1,3 +1,31 @@
+## geometry (melodic) - 1.11.9-0
+
+The packages in the `geometry` repository were released into the `melodic` distro by running `/usr/bin/bloom-release -t melodic -r melodic geometry` on `Thu, 22 Mar 2018 00:18:13 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+
+- upstream repository: https://github.com/ros/geometry.git
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `1.11.9-0`
+
+Versions of tools used:
+
+- bloom version: `0.6.4`
+- catkin_pkg version: `0.3.9`
+- rosdep version: `0.11.8`
+- rosdistro version: `0.6.3`
+- vcstools version: `0.1.39`
+
+
 ## geometry (indigo) - 1.11.9-0
 
 The packages in the `geometry` repository were released into the `indigo` distro by running `/usr/bin/bloom-release -t indigo -r indigo geometry` on `Sat, 15 Jul 2017 08:29:22 -0000`
