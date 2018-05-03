@@ -2,6 +2,9 @@
 Changelog for package geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.0 (2018-05-02)
+-------------------
+
 1.11.9 (2017-07-14)
 -------------------
 * [doc] Add migration notice in manifest. (`#129 <https://github.com/ros/geometry/issues/129>`_)
