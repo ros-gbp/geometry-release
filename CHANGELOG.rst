@@ -2,6 +2,11 @@
 Changelog for package geometry
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.12.1 (2020-03-10)
+-------------------
+* Bump CMake version to avoid CMP0048 warning (`#204 <https://github.com/ros/geometry/issues/204>`_)
+* Contributors: Shane Loretz
+
 1.12.0 (2018-05-02)
 -------------------
 
