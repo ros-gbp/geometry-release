@@ -47,6 +47,18 @@
 #include "geometry_msgs/TwistStamped.h"
 
 #include <tf2_ros/buffer.h>
+#include <ros/macros.h>
+
+// Import/export for windows dll's and visibility for gcc shared libraries.
+#ifdef ROS_BUILD_SHARED_LIBS // ros is being built around shared libraries
+  #ifdef tf_EXPORTS // we are building a shared lib/dll
+    #define TF_DECL ROS_HELPER_EXPORT
+  #else // we are using shared lib/dll
+    #define TF_DECL ROS_HELPER_IMPORT
+  #endif
+#else // ros is being built around static libraries
+  #define TF_DECL
+#endif
 
 namespace tf
 {
@@ -57,7 +69,7 @@ std::string resolve(const std::string& prefix, const std::string& frame_name);
 std::string strip_leading_slash(const std::string& frame_name);
 
 /** \deprecated This has been renamed to tf::resolve */
-__attribute__((deprecated)) static inline std::string remap(const std::string& prefix, const std::string& frame_name) { return tf::resolve(prefix, frame_name);} ;
+ROS_DEPRECATED static inline std::string remap(const std::string& prefix, const std::string& frame_name) { return tf::resolve(prefix, frame_name);}
 
 enum ErrorValues { NO_ERROR = 0, LOOKUP_ERROR, CONNECTIVITY_ERROR, EXTRAPOLATION_ERROR};
 
@@ -88,7 +100,7 @@ typedef struct
  *
  * All function calls which pass frame ids can potentially throw the exception tf::LookupException
  */
-class Transformer
+class TF_DECL Transformer
 {
 public:
   /************* Constants ***********************/
@@ -409,7 +421,7 @@ inline void assertQuaternionValid(const tf::Quaternion & q)
     ss << "Quaternion malformed, magnitude: " << q.x()*q.x() + q.y()*q.y() + q.z()*q.z() + q.w()*q.w() << " should be 1.0" <<std::endl;
     throw tf::InvalidArgument(ss.str());
   }  //  ROS_ASSERT(std::fabs(q.x()*q.x() + q.y()*q.y() + q.z*q.z() + q.w()*q.w() - 1 < 0.01));
-};
+}
 
 /** \brief Throw InvalidArgument if quaternion is malformed */
 inline void assertQuaternionValid(const geometry_msgs::Quaternion & q)
@@ -427,6 +439,6 @@ inline void assertQuaternionValid(const geometry_msgs::Quaternion & q)
     ss << "Quaternion malformed, magnitude: " << q.x*q.x + q.y*q.y + q.z*q.z + q.w*q.w << " should be 1.0" <<std::endl;
     throw tf::InvalidArgument(ss.str());
   }  //  ROS_ASSERT(std::fabs(q.x()*q.x() + q.y()*q.y() + q.z*q.z() + q.w()*q.w() - 1 < 0.01));
-};
+}
 }
 #endif //TF_TF_H

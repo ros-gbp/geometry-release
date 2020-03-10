@@ -1,7 +1,17 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.0.2)
 project(tf)
 
-add_compile_options(-std=c++11)
+include(CheckCXXCompilerFlag)
+unset(COMPILER_SUPPORTS_CXX11 CACHE)
+if(MSVC)
+  # https://docs.microsoft.com/en-us/cpp/build/reference/std-specify-language-standard-version
+  # MSVC has c++14 enabled by default, no need to specify c++11
+else()
+  check_cxx_compiler_flag(-std=c++11 COMPILER_SUPPORTS_CXX11)
+  if(COMPILER_SUPPORTS_CXX11)
+    add_compile_options(-std=c++11)
+  endif()
+endif()
 
 find_package(catkin REQUIRED COMPONENTS
     angles
@@ -15,7 +25,7 @@ find_package(catkin REQUIRED COMPONENTS
     std_msgs
     tf2_ros
 )
-find_package(Boost REQUIRED COMPONENTS thread signals system)
+find_package(Boost REQUIRED COMPONENTS thread system)
 
 catkin_python_setup()
 
@@ -67,6 +77,7 @@ if(CATKIN_ENABLE_TESTING AND NOT ANDROID)
 find_package(rostest REQUIRED)
 
 catkin_add_gtest(tf_unittest test/tf_unittest.cpp)
+target_include_directories(tf_unittest PRIVATE ${rostest_INCLUDE_DIRS})
 target_link_libraries(tf_unittest ${PROJECT_NAME})
 
 catkin_add_gtest(tf_quaternion_unittest test/quaternion.cpp)
@@ -124,9 +135,15 @@ install(DIRECTORY include/${PROJECT_NAME}/
     DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 )
 
-install(TARGETS ${PROJECT_NAME} tf_echo tf_empty_listener tf_change_notifier tf_monitor static_transform_publisher
+# Install library
+install(TARGETS ${PROJECT_NAME}
     ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
     LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
+    RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
+)
+
+# Install executable
+install(TARGETS tf_echo tf_empty_listener tf_change_notifier tf_monitor static_transform_publisher
     RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
