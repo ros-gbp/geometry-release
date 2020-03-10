@@ -35,7 +35,7 @@ namespace tf{
  * It has an un-used w component to suit 16-byte alignment when Vector3 is stored in containers. This extra component can be used by derived classes (Quaternion?) or by user
  * Ideally, this class should be replaced by a platform optimized SIMD version that keeps the data in registers
  */
-class Vector3
+ATTRIBUTE_ALIGNED16(class) Vector3
 {
 public:
 
@@ -347,7 +347,7 @@ public:
 
 		TFSIMD_FORCE_INLINE	void	deSerializeDouble(const struct	Vector3DoubleData& dataIn);
 
-} __attribute__ ((aligned(16)));
+};
 
 /**@brief Return the sum of two vectors (Point symantics)*/
 TFSIMD_FORCE_INLINE Vector3 
@@ -623,7 +623,7 @@ public:
 TFSIMD_FORCE_INLINE void	tfSwapScalarEndian(const tfScalar& sourceVal, tfScalar& destVal)
 {
 	unsigned char* dest = (unsigned char*) &destVal;
-	unsigned char* src  = (unsigned char*) &sourceVal;
+	const unsigned char* src  = (const unsigned char*) &sourceVal;
 	dest[0] = src[7];
     dest[1] = src[6];
     dest[2] = src[5];
