@@ -1,0 +1,13 @@
+Source: ros-noetic-tf
+Section: misc
+Priority: optional
+Maintainer: Tully Foote <tfoote@osrfoundation.org>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-angles, ros-noetic-catkin (>= 0.6.4), ros-noetic-geometry-msgs, ros-noetic-message-filters, ros-noetic-message-generation, ros-noetic-rosconsole, ros-noetic-roscpp, ros-noetic-rostest, ros-noetic-rostime, ros-noetic-rosunit, ros-noetic-sensor-msgs, ros-noetic-std-msgs, ros-noetic-tf2-ros (>= 0.5.16)
+Homepage: http://www.ros.org/wiki/tf
+Standards-Version: 3.9.2
+
+Package: ros-noetic-tf
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, graphviz, ros-noetic-geometry-msgs, ros-noetic-message-filters (>= 1.11.1), ros-noetic-message-runtime, ros-noetic-rosconsole, ros-noetic-roscpp, ros-noetic-roswtf, ros-noetic-sensor-msgs, ros-noetic-std-msgs, ros-noetic-tf2-ros (>= 0.5.16)
+Description: tf is a package that lets the user keep track of multiple coordinate frames over time.
+ tf maintains the relationship between coordinate frames in a tree structure buffered in time, and lets the user transform points, vectors, etc between any two coordinate frames at any desired point in time. Migration: Since ROS Hydro, tf has been &quot;deprecated&quot; in favor of tf2. tf2 is an iteration on tf providing generally the same feature set more efficiently. As well as adding a few new features. As tf2 is a major change the tf API has been maintained in its current form. Since tf2 has a superset of the tf features with a subset of the dependencies the tf implementation has been removed and replaced with calls to tf2 under the hood. This will mean that all users will be compatible with tf2. It is recommended for new work to use tf2 directly as it has a cleaner interface. However tf will continue to be supported for through at least J Turtle.
