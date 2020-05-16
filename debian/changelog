@@ -1,0 +1,344 @@
+ros-noetic-kdl-conversions (1.13.1-1focal) focal; urgency=high
+
+  * Format 2 and build_export_depend orocos kdl (#210 <https://github.com/ros/geometry/issues/210>)
+  * Contributors: Shane Loretz
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 15 May 2020 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.13.0-1focal) focal; urgency=high
+
+  * Replace kdl packages with rosdep keys (#206 <https://github.com/ros/geometry/issues/206>)
+  * Contributors: Shane Loretz
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 10 Mar 2020 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.12.1-1focal) focal; urgency=high
+
+  * Bump CMake version to avoid CMP0048 warning (#204 <https://github.com/ros/geometry/issues/204>)
+  * windows bring up, use ROS_DEPRECATED
+  * Contributors: James Xu, Shane Loretz
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 10 Mar 2020 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.12.0-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Wed, 02 May 2018 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.9-1focal) focal; urgency=high
+
+  * Fix cmake dependency export usage
+  * Contributors: Timo Röhling
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 14 Jul 2017 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.8-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 04 Mar 2016 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.7-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 21 Apr 2015 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.6-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Wed, 25 Mar 2015 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.5-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 17 Mar 2015 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.4-1focal) focal; urgency=high
+
+  * Update package.xml
+  * Contributors: David Lu!!
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 23 Dec 2014 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.3-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Wed, 07 May 2014 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.2-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 25 Feb 2014 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.1-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sun, 23 Feb 2014 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.11.0-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 14 Feb 2014 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.8-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sat, 01 Feb 2014 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.7-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 27 Dec 2013 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.6-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Wed, 28 Aug 2013 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.5-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 19 Jul 2013 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.4-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Thu, 11 Jul 2013 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.3-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 09 Jul 2013 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.2-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 09 Jul 2013 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.1-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 05 Jul 2013 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.10.0-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 05 Jul 2013 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.31-1focal) focal; urgency=high
+
+  * add link directories
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 19 Apr 2013 01:16:00 -0000
+
+ros-noetic-kdl-conversions (1.9.30-1focal) focal; urgency=high
+
+  * Fixes #11 <https://github.com/ros/geometry/issues/11>: orocos_kdl now has cmake rules oroco-kdl
+    update cmake to use orocos_kdl as plain cmake package instead of catkin package
+    Signed-off-by: Ruben Smits <mailto:ruben.smits@intermodalics.eu>
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Thu, 18 Apr 2013 23:26:00 -0000
+
+ros-noetic-kdl-conversions (1.9.29-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sun, 13 Jan 2013 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.28-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Wed, 02 Jan 2013 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.27-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 21 Dec 2012 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.26-1focal) focal; urgency=high
+
+  * add missing dep to catkin
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 14 Dec 2012 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.25-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Thu, 13 Dec 2012 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.24-1focal) focal; urgency=high
+
+  * Version 1.9.24
+  * Fixes to CMakeLists.txt's while building from source
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 11 Dec 2012 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.23-1focal) focal; urgency=high
+
+  * Releaseing version 1.9.23
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Thu, 22 Nov 2012 08:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.22-1focal) focal; urgency=high
+
+  * more backwards compatible conversions and an include to make sure it gets into the old header location
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sun, 04 Nov 2012 17:14:00 -0000
+
+ros-noetic-kdl-conversions (1.9.21-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sun, 04 Nov 2012 09:19:00 -0000
+
+ros-noetic-kdl-conversions (1.9.20-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 02 Nov 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.19-1focal) focal; urgency=high
+
+  * Removed deprecated 'brief' attribute from <description> tags.
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Wed, 31 Oct 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.18-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 16 Oct 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.17-1focal) focal; urgency=high
+
+  * fix several dependency issues
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 02 Oct 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.16-1focal) focal; urgency=high
+
+  * adding geometry metapackage and updating to 1.9.16
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sat, 29 Sep 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.15-1focal) focal; urgency=high
+
+  * fix a few dependency/catkin problems
+  * remove old API files
+  * comply to the new catkin API
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sun, 30 Sep 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.14-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 18 Sep 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.13-1focal) focal; urgency=high
+
+  * update manifests
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Mon, 17 Sep 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.12-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sun, 16 Sep 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.11-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sat, 15 Sep 2012 05:49:00 -0000
+
+ros-noetic-kdl-conversions (1.9.10-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Sat, 15 Sep 2012 05:30:00 -0000
+
+ros-noetic-kdl-conversions (1.9.9-1focal) focal; urgency=high
+
+  * minor patches for new build system
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Tue, 11 Sep 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.8-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Mon, 03 Sep 2012 07:00:00 -0000
+
+ros-noetic-kdl-conversions (1.9.7-1focal) focal; urgency=high
+
+  * minor build fixes
+  * fixed some minor errors from last commit
+  * completed set of eigen conversions; added KDL conversions
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 10 Aug 2012 19:19:00 -0000
+
+ros-noetic-kdl-conversions (1.9.6-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 03 Aug 2012 02:59:00 -0000
+
+ros-noetic-kdl-conversions (1.9.5-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 03 Aug 2012 02:48:00 -0000
+
+ros-noetic-kdl-conversions (1.9.4-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 03 Aug 2012 01:29:00 -0000
+
+ros-noetic-kdl-conversions (1.9.3-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Fri, 03 Aug 2012 01:28:00 -0000
+
+ros-noetic-kdl-conversions (1.9.2-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Thu, 02 Aug 2012 04:05:00 -0000
+
+ros-noetic-kdl-conversions (1.9.1-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Thu, 02 Aug 2012 02:16:00 -0000
+
+ros-noetic-kdl-conversions (1.9.0-1focal) focal; urgency=high
+
+
+
+ -- Tully Foote <tfoote@osrfoundation.org>  Thu, 02 Aug 2012 01:52:00 -0000
+
+
