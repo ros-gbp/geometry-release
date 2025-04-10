@@ -1,3 +1,31 @@
+## geometry (noetic) - 1.13.3-1
+
+The packages in the `geometry` repository were released into the `noetic` distro by running `/usr/bin/bloom-release -r noetic geometry` on `Thu, 10 Apr 2025 20:10:48 -0000`
+
+These packages were released:
+- `eigen_conversions`
+- `geometry`
+- `kdl_conversions`
+- `tf`
+- `tf_conversions`
+
+Version of package(s) in repository `geometry`:
+
+- upstream repository: https://github.com/ros/geometry.git
+- release repository: https://github.com/ros-gbp/geometry-release.git
+- rosdistro version: `1.13.2-1`
+- old version: `1.13.2-1`
+- new version: `1.13.3-1`
+
+Versions of tools used:
+
+- bloom version: `0.12.0`
+- catkin_pkg version: `1.0.0`
+- rosdep version: `0.25.1`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## geometry (noetic) - 1.13.2-1
 
 The packages in the `geometry` repository were released into the `noetic` distro by running `/usr/bin/bloom-release geometry -r noetic` on `Tue, 09 Jun 2020 06:31:27 -0000`
