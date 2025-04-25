@@ -2,6 +2,9 @@
 Changelog for package tf_conversions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.13.4 (2025-04-25)
+-------------------
+
 1.13.3 (2025-04-10)
 -------------------
 * Drop nonexistent rosmake doc builder. (`#235 <https://github.com/ros/geometry/issues/235>`_)
